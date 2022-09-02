@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:PapyrusJava="http://www.eclipse.org/papyrus/PapyrusJava/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="_Jh-yoIpJEeyoZtaM93f79w" name="model">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_J_GzgIpJEeyoZtaM93f79w">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_nnOu8IpJEeyoZtaM93f79w" name="충무공 마인드">
+      <packagedElement xmi:type="uml:Package" xmi:id="_nyp70IpJEeyoZtaM93f79w" name="version_7_20220204">
+        <packagedElement xmi:type="uml:Class" xmi:id="_ny1iAIpJEeyoZtaM93f79w" name="AlienShot" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_ny82wIpJEeyoZtaM93f79w" general="_ny5zcIpJEeyoZtaM93f79w"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_nzMHUIpJEeyoZtaM93f79w" name="game" visibility="private" type="_nzGnwIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oD-8YIpJEeyoZtaM93f79w" name="AlienShot" specification="_oDSY0IpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //이미지 파일명, 이미지 x, y 좌표는 부모 클래스 생성자에서 초기화&#xD;
+    super(image, x, y);&#xD;
+    this.game = game;&#xD;
+    //x, y축 이동량 초기화&#xD;
+    this.dx = dx;&#xD;
+    dy = 3 * game.stage;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oEJUcIpJEeyoZtaM93f79w" name="move" specification="_oEGRIIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //부모 클래스의 move 실행&#xD;
+    super.move();&#xD;
+    if (y > game.getWidth() + 100)&#xD;
+        //해당 탄환 제거&#xD;
+        game.removeSprite(this);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oEX98IpJEeyoZtaM93f79w" name="handleCollision" specification="_oEPbEIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //other 객체가(부딪힌 객체가) AlienSprite(적)이면&#xD;
+    if (other instanceof StarShip) {&#xD;
+        //es 01.28 endGamemg 메소드 호출 및 실행&#xD;
+        game.endGamemg();&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oDSY0IpJEeyoZtaM93f79w" name="AlienShot" visibility="public" method="_oD-8YIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oDkssIpJEeyoZtaM93f79w" name="game" type="_nzGnwIpJEeyoZtaM93f79w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oDwS4IpJEeyoZtaM93f79w" name="image" type="_nzb-8IpJEeyoZtaM93f79w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oDyvIIpJEeyoZtaM93f79w" name="x">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oD1ycIpJEeyoZtaM93f79w" name="y">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oD4OsIpJEeyoZtaM93f79w" name="dx">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oEGRIIpJEeyoZtaM93f79w" name="move" visibility="public" method="_oEJUcIpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oEPbEIpJEeyoZtaM93f79w" name="handleCollision" visibility="public" method="_oEX98IpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oEU6oIpJEeyoZtaM93f79w" name="other" type="_ny5zcIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_ny5zcIpJEeyoZtaM93f79w" name="Common" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oRgbAIpJEeyoZtaM93f79w" name="x" visibility="protected" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oRnIsIpJEeyoZtaM93f79w" name="y" visibility="protected" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oRsBMIpJEeyoZtaM93f79w" name="dx" visibility="protected" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oRxgwIpJEeyoZtaM93f79w" name="dy" visibility="protected" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oR2ZQIpJEeyoZtaM93f79w" name="image" visibility="protected" type="_nzb-8IpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oSNloIpJEeyoZtaM93f79w" name="Common" specification="_oR9G8IpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.image = image;&#xD;
+    this.x = x;&#xD;
+    this.y = y;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oSWIgIpJEeyoZtaM93f79w" name="getWidth" specification="_oSRQAIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    return image.getWidth(null);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oSddQIpJEeyoZtaM93f79w" name="getHeight" specification="_oSZy4IpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    return image.getHeight(null);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oSmAIIpJEeyoZtaM93f79w" name="draw" specification="_oShusIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    g.drawImage(image, x, y, null);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oSrfsIpJEeyoZtaM93f79w" name="move" specification="_oSpqgIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    x += dx;&#xD;
+    y += dy;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oS0CkIpJEeyoZtaM93f79w" name="setDx" specification="_oSujAIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.dx = dx;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oS-aoIpJEeyoZtaM93f79w" name="setDy" specification="_oS6JMIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.dy = dy;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oTFIUIpJEeyoZtaM93f79w" name="getDx" specification="_oTBd8IpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    return dx;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oTMdEIpJEeyoZtaM93f79w" name="getDy" specification="_oTILoIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    return dy;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oTTx0IpJEeyoZtaM93f79w" name="getX" specification="_oTPgYIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    return x;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oTZ4cIpJEeyoZtaM93f79w" name="getY" specification="_oTWOEIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    return y;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oTibUIpJEeyoZtaM93f79w" name="checkCollision" specification="_oTdi0IpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    Rectangle myRect = new Rectangle();&#xD;
+    Rectangle otherRect = new Rectangle();&#xD;
+    myRect.setBounds(x, y, getWidth(), getHeight());&#xD;
+    otherRect.setBounds(other.x, other.y, other.getWidth(), other.getHeight());&#xD;
+    return myRect.intersects(otherRect);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oUIRMIpJEeyoZtaM93f79w" name="handleCollision" specification="_oTleoIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oR9G8IpJEeyoZtaM93f79w" name="Common" visibility="public" method="_oSNloIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oSGQ4IpJEeyoZtaM93f79w" name="image" type="_nzb-8IpJEeyoZtaM93f79w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oSIGEIpJEeyoZtaM93f79w" name="x">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oSLJYIpJEeyoZtaM93f79w" name="y">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oSRQAIpJEeyoZtaM93f79w" name="getWidth" visibility="public" method="_oSWIgIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oSTsQIpJEeyoZtaM93f79w" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oSZy4IpJEeyoZtaM93f79w" name="getHeight" visibility="public" method="_oSddQIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oSboEIpJEeyoZtaM93f79w" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oShusIpJEeyoZtaM93f79w" name="draw" visibility="public" method="_oSmAIIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oSkK8IpJEeyoZtaM93f79w" name="g" type="_oLeEcIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oSpqgIpJEeyoZtaM93f79w" name="move" visibility="public" method="_oSrfsIpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oSujAIpJEeyoZtaM93f79w" name="setDx" visibility="public" method="_oS0CkIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oSwYMIpJEeyoZtaM93f79w" name="dx">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oS6JMIpJEeyoZtaM93f79w" name="setDy" visibility="public" method="_oS-aoIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oS8lcIpJEeyoZtaM93f79w" name="dy">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oTBd8IpJEeyoZtaM93f79w" name="getDx" visibility="public" method="_oTFIUIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oTDTIIpJEeyoZtaM93f79w" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oTILoIpJEeyoZtaM93f79w" name="getDy" visibility="public" method="_oTMdEIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oTKn4IpJEeyoZtaM93f79w" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oTPgYIpJEeyoZtaM93f79w" name="getX" visibility="public" method="_oTTx0IpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oTRVkIpJEeyoZtaM93f79w" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oTWOEIpJEeyoZtaM93f79w" name="getY" visibility="public" method="_oTZ4cIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oTYDQIpJEeyoZtaM93f79w" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oTdi0IpJEeyoZtaM93f79w" name="checkCollision" visibility="public" method="_oTibUIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oTew8IpJEeyoZtaM93f79w" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oTgmIIpJEeyoZtaM93f79w" name="other" type="_ny5zcIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oTleoIpJEeyoZtaM93f79w" name="handleCollision" visibility="public" method="_oUIRMIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oUGcAIpJEeyoZtaM93f79w" name="other" type="_ny5zcIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_nzGnwIpJEeyoZtaM93f79w" name="GalagonGame" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_oGGcQIpJEeyoZtaM93f79w" general="_oFweAIpJEeyoZtaM93f79w"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oHHI4IpJEeyoZtaM93f79w" name="running" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_oHMBYIpJEeyoZtaM93f79w" name="defaultValue">
+              <language>JAVA</language>
+              <body>true</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oHQ54IpJEeyoZtaM93f79w" name="endgamemg" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oHTWIIpJEeyoZtaM93f79w" name="winmg" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oHpUYIpJEeyoZtaM93f79w" name="sprites" visibility="private" type="_oHaq4IpJEeyoZtaM93f79w" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_oHyeUIpJEeyoZtaM93f79w" name="defaultValue">
+              <language>JAVA</language>
+              <body>new ArrayList()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oH2vwIpJEeyoZtaM93f79w" name="starship" visibility="private" type="_ny5zcIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oIGnYIpJEeyoZtaM93f79w" name="alienImage" visibility="private" type="_oH8PUIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oIJqsIpJEeyoZtaM93f79w" name="shotImage" visibility="private" type="_oH8PUIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oIOjMIpJEeyoZtaM93f79w" name="shipImage" visibility="private" type="_oH8PUIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oIUCwIpJEeyoZtaM93f79w" name="alienShotImage" visibility="private" type="_oH8PUIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oInkwIpJEeyoZtaM93f79w" name="score1" visibility="private" type="_oIYUMIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oIyj4IpJEeyoZtaM93f79w" name="score2" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oI4qgIpJEeyoZtaM93f79w" name="start1" visibility="private" type="_oIYUMIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oI-xIIpJEeyoZtaM93f79w" name="start2" visibility="private" type="_oIYUMIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oJEQsIpJEeyoZtaM93f79w" name="guide1" visibility="private" type="_oIYUMIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oJMMgIpJEeyoZtaM93f79w" name="guide2" visibility="private" type="_oIYUMIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oJVWcIpJEeyoZtaM93f79w" name="background" visibility="private" type="_oJSTIIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oJegYIpJEeyoZtaM93f79w" name="win" visibility="private" type="_oIYUMIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oJix0IpJEeyoZtaM93f79w" name="Lose" visibility="private" type="_oIYUMIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oJo4cIpJEeyoZtaM93f79w" name="end" visibility="private" type="_oIYUMIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oJtJ4IpJEeyoZtaM93f79w" name="finalScore" visibility="private" type="_oIYUMIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oJw0QIpJEeyoZtaM93f79w" name="stage" visibility="protected" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_oJzQgIpJEeyoZtaM93f79w" name="defaultValue">
+              <language>JAVA</language>
+              <body>0</body>
+            </defaultValue>
+          </ownedAttribute>
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_oGxKoIpJEeyoZtaM93f79w" name="GalagonGame implements KeyListener" client="_nzGnwIpJEeyoZtaM93f79w" supplier="_oGKGoIpJEeyoZtaM93f79w" contract="_oGKGoIpJEeyoZtaM93f79w"/>
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_oHEsoIpJEeyoZtaM93f79w" name="GalagonGame implements Runnable" client="_nzGnwIpJEeyoZtaM93f79w" supplier="_oG2qMIpJEeyoZtaM93f79w" contract="_oG2qMIpJEeyoZtaM93f79w"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oKU08IpJEeyoZtaM93f79w" name="GalagonGame" specification="_oJ1swIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    JFrame frame = new JFrame(&quot;Galaga Game&quot;);&#xD;
+    frame.setSize(800, 900);&#xD;
+    frame.add(this, BorderLayout.CENTER);&#xD;
+    frame.setResizable(false);&#xD;
+    frame.setVisible(true);&#xD;
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);&#xD;
+    // 현재 시스템 디스플레이의 창 사이즈를 가져온다&#xD;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();&#xD;
+    // 생성되는 프레임 창의 위치를 (현재디스플레이의가로/2 - 프레임창가로/2, 현재디스플레이의세로/2 - 프레임창세로/2) 로 설정&#xD;
+    // 즉, 화면 정 중앙에 맞춘다&#xD;
+    frame.setLocation((int) ((screenSize.getWidth() / 2) - (frame.getWidth() / 2)), (int) ((screenSize.getHeight() / 2) - (frame.getHeight() / 2)));&#xD;
+    //별 객체 생성 및 별 좌표 생성&#xD;
+    background = new Background(this);&#xD;
+    background.addStar();&#xD;
+    //배경으로 패널 배경색 검은색으로 설정&#xD;
+    setBackground(Color.BLACK);&#xD;
+    setLayout(null);&#xD;
+    Font font1 = new Font(&quot;Gothic&quot;, Font.BOLD, 40);&#xD;
+    Font font2 = new Font(&quot;Arial&quot;, Font.PLAIN, 20);&#xD;
+    score1 = new JLabel(&quot;Score : &quot; + score2);&#xD;
+    score1.setForeground(Color.YELLOW);&#xD;
+    score1.setFont(font1);&#xD;
+    score1.setSize(250, 40);&#xD;
+    score1.setLocation(10, 10);&#xD;
+    add(score1);&#xD;
+    start1 = new JLabel(&quot;GALAGON GAME&quot;);&#xD;
+    start1.setForeground(Color.RED);&#xD;
+    start1.setFont(new Font(&quot;Dialog&quot;, Font.ITALIC, 70));&#xD;
+    start1.setSize(570, 70);&#xD;
+    start1.setLocation((getWidth() / 2) - (start1.getWidth() / 2), (getHeight() / 2) - start1.getHeight() - 50);&#xD;
+    add(start1);&#xD;
+    start2 = new JLabel(&quot;Please press the space bar&quot;);&#xD;
+    start2.setForeground(Color.WHITE);&#xD;
+    start2.setFont(new Font(&quot;Arial&quot;, Font.PLAIN, 30));&#xD;
+    start2.setSize(360, 30);&#xD;
+    start2.setLocation((getWidth() / 2) - (start2.getWidth() / 2), (getHeight() / 2) + 50);&#xD;
+    add(start2);&#xD;
+    guide1 = new JLabel(&quot;Move : left(←) &amp; right(→)&quot;);&#xD;
+    guide1.setForeground(Color.WHITE);&#xD;
+    guide1.setFont(font2);&#xD;
+    guide1.setSize(230, 20);&#xD;
+    guide1.setLocation((getWidth() / 2) - (guide1.getWidth() / 2), getHeight() - guide1.getHeight() - 40);&#xD;
+    add(guide1);&#xD;
+    guide2 = new JLabel(&quot;Attack : space bar&quot;);&#xD;
+    guide2.setForeground(Color.WHITE);&#xD;
+    guide2.setFont(font2);&#xD;
+    guide2.setSize(170, 20);&#xD;
+    guide2.setLocation((getWidth() / 2) - (guide2.getWidth() / 2), getHeight() - guide1.getHeight() - 10);&#xD;
+    add(guide2);&#xD;
+    win = new JLabel(&quot;&quot;);&#xD;
+    win.setForeground(Color.RED);&#xD;
+    win.setFont(new Font(&quot;Dialog&quot;, Font.ITALIC, 100));&#xD;
+    win.setSize(500, 100);&#xD;
+    win.setLocation((getWidth() / 2) - (win.getWidth() / 2), (getHeight() / 2) - win.getHeight() - 50);&#xD;
+    add(win);&#xD;
+    //es.02.02 패배 라벨 추가&#xD;
+    Lose = new JLabel(&quot;&quot;);&#xD;
+    Lose.setForeground(Color.BLUE);&#xD;
+    Lose.setFont(new Font(&quot;Dialog&quot;, Font.ITALIC, 90));&#xD;
+    Lose.setSize(500, 100);&#xD;
+    Lose.setLocation((getWidth() / 2) - (Lose.getWidth() / 2), (getHeight() / 2) - Lose.getHeight() - 50);&#xD;
+    add(Lose);&#xD;
+    end = new JLabel(&quot;&quot;);&#xD;
+    end.setForeground(Color.WHITE);&#xD;
+    end.setFont(new Font(&quot;Dialog&quot;, Font.ITALIC, 30));&#xD;
+    end.setSize(1000, 100);&#xD;
+    end.setLocation((getWidth() / 2) - (guide2.getWidth() / 2), getHeight() - end.getHeight() - 50);&#xD;
+    add(end);&#xD;
+    finalScore = new JLabel(&quot;&quot;);&#xD;
+    finalScore.setForeground(Color.YELLOW);&#xD;
+    finalScore.setFont(new Font(&quot;Arial&quot;, Font.PLAIN, 50));&#xD;
+    finalScore.setSize(300, 50);&#xD;
+    finalScore.setLocation((getWidth() / 2) - (finalScore.getWidth() / 2), (getHeight() / 2) + 50);&#xD;
+    add(finalScore);&#xD;
+    try {&#xD;
+        shotImage = ImageIO.read(new File(&quot;fireball.gif&quot;));&#xD;
+        shipImage = ImageIO.read(new File(&quot;ship2.png&quot;));&#xD;
+        alienImage = ImageIO.read(new File(&quot;sprite_rotmg_enemy0.png&quot;));&#xD;
+        alienShotImage = ImageIO.read(new File(&quot;Attack.png&quot;));&#xD;
+    } catch (IOException e) {&#xD;
+        e.printStackTrace();&#xD;
+    }&#xD;
+    //포커스 지정(프레임)&#xD;
+    this.requestFocus();&#xD;
+    //내 유닛과 적 유닛 생성하여 저장소에 저장&#xD;
+    //		this.initSprites();&#xD;
+    //키 이벤트 지정(프레임)&#xD;
+    addKeyListener(this);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oKfNAIpJEeyoZtaM93f79w" name="initSprites" specification="_oKcwwIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //내 유닛 생성하여&#xD;
+    starship = new StarShip(this, shipImage, (getWidth() / 2) - (shipImage.getWidth() / 2), getHeight() - shipImage.getHeight());&#xD;
+    //저장소에 저장&#xD;
+    sprites.add(starship);&#xD;
+    //적 유닛 객체를 5행 12열로 60마리 생성하여&#xD;
+    for (int y = 0; y &lt; 5; y++) {&#xD;
+        for (int x = 0; x &lt; 12; x++) {&#xD;
+            Common alien = new Alien(this, alienImage, 50 + (x * 50), 50 + (y * 30));&#xD;
+            //순서대로 저장소에 저장&#xD;
+            sprites.add(alien);&#xD;
+        }&#xD;
+    }&#xD;
+//		for(int y = 0; y &lt; 4; y++) {&#xD;
+//			for(int x = 0; x &lt; 6; x++) {&#xD;
+//				Common alien = new Alien(this, alienImage, getWidth() + 300 + (x * 50), 200 + (y * 30));&#xD;
+//				//순서대로 저장소에 저장&#xD;
+//				sprites.add(alien);&#xD;
+//			}&#xD;
+//		}&#xD;
+//		for(int y = 0; y &lt; 4; y++) {&#xD;
+//			for(int x = 0; x &lt; 6; x++) {&#xD;
+//				Common alien = new Alien(this, alienImage, -300 + (x * 50), 200 + (y * 30));&#xD;
+//				//순서대로 저장소에 저장&#xD;
+//				sprites.add(alien);&#xD;
+//			}&#xD;
+//		}&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oKlToIpJEeyoZtaM93f79w" name="startGame" specification="_oKi3YIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    sprites.clear();&#xD;
+    initSprites();&#xD;
+    Thread start = new Thread(this);&#xD;
+    start.start();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oKraQIpJEeyoZtaM93f79w" name="endGame" specification="_oKplEIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    System.out.println(&quot;endGame&quot;);&#xD;
+    System.exit(0);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oKyH8IpJEeyoZtaM93f79w" name="endGamemg" specification="_oKvrsIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    endgamemg = true;&#xD;
+    Lose.setText(&quot;Game Lose&quot;);&#xD;
+    finalScore.setText(&quot;Score : &quot; + score2);&#xD;
+    score1.setText(&quot;&quot;);&#xD;
+    end.setText(&quot;ENTER 키를 누르면 종료됩니다.&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oK41oIpJEeyoZtaM93f79w" name="Winner" specification="_oK2ZYIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    winmg = true;&#xD;
+    win.setText(&quot;Game Win&quot;);&#xD;
+    finalScore.setText(&quot;Score : &quot; + score2);&#xD;
+    score1.setText(&quot;&quot;);&#xD;
+    end.setText(&quot;ENTER 키를 누르면 종료됩니다.&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oLDNsIpJEeyoZtaM93f79w" name="removeSprite" specification="_oK9uIIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    if (sprite instanceof Alien)&#xD;
+        score2 += 50;&#xD;
+    sprites.remove(sprite);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oLGRAIpJEeyoZtaM93f79w" name="fire" specification="_oLEb0IpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //		try {&#xD;
+    //			Thread.sleep(30);&#xD;
+    //		} catch(Exception e) {}&#xD;
+    Common shot = new Shot(this, shotImage, starship.getX() + (shipImage.getWidth() / 2) - (shotImage.getWidth() / 2), starship.getY() - 30);&#xD;
+    sprites.add(shot);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oLTsYIpJEeyoZtaM93f79w" name="Attack" specification="_oLLJgIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    int dx = 0;&#xD;
+    int get = (int) (Math.random() * sprites.size());&#xD;
+    if (sprites.get(get) instanceof Alien) {&#xD;
+        Common enemy = (Common) sprites.get(get);&#xD;
+        if (starship.x > enemy.x)&#xD;
+            dx = (int) (starship.x / enemy.x);&#xD;
+        else if (starship.x &lt; enemy.x)&#xD;
+            dx = (int) -(enemy.x / starship.x);&#xD;
+        if (dx > 3)&#xD;
+            dx = 3;&#xD;
+        Common Attack = new AlienShot(this, alienShotImage, enemy.getX() + (alienImage.getWidth() / 2) - (alienShotImage.getWidth() / 2), enemy.getY() + alienImage.getHeight(), dx);&#xD;
+        sprites.add(Attack);&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oMEhYIpJEeyoZtaM93f79w" name="paint" specification="_oL2e8IpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //부모 컨테이너(프레임) 그리고&#xD;
+    super.paint(g);&#xD;
+    //검은색 사각형 생성 (배경)&#xD;
+    //		g.setColor(Color.black);&#xD;
+    //		g.fillRect(0, 0, getWidth(), getHeight());&#xD;
+    //별 그리기&#xD;
+    background.draw(g);&#xD;
+    //저장소에 저장한 객체들을 모두 그리기 (제네릭 쓰면 형변환 안해도 됨)&#xD;
+    for (int i = 0; i &lt; sprites.size(); i++) {&#xD;
+        Common sprite = (Common) sprites.get(i);&#xD;
+        sprite.draw(g);&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oMOSYIpJEeyoZtaM93f79w" name="run" specification="_oMKoAIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    stage++;&#xD;
+    //게임 실행중 여부 플래그에 따라 반복 진행/정지&#xD;
+    while (running) {&#xD;
+        int alienCount = 0;&#xD;
+        //배경 움직임&#xD;
+        background.move();&#xD;
+        //저장소에 저장한 객체 모두 움직임&#xD;
+        for (int i = 0; i &lt; sprites.size(); i++) {&#xD;
+            Common sprite = (Common) sprites.get(i);&#xD;
+            sprite.move();&#xD;
+        }&#xD;
+        //예) 0번과 그 이후 나머지 비교, 1번과 그 이후 나머지 비교, .... &#xD;
+        for (int p = 0; p &lt; sprites.size(); p++) {&#xD;
+            for (int s = p + 1; s &lt; sprites.size(); s++) {&#xD;
+                Common me = (Common) sprites.get(p);&#xD;
+                Common other = (Common) sprites.get(s);&#xD;
+                //두 객체가 부딪혔으면&#xD;
+                if (me.checkCollision(other)) {&#xD;
+                    //각 객체에 정의된 handleCollision 메소드로&#xD;
+                    //적과 부딪혔는지 확인하여 그에 맞는 동작을 실행&#xD;
+                    me.handleCollision(other);&#xD;
+                    other.handleCollision(me);&#xD;
+                }&#xD;
+            }&#xD;
+        }&#xD;
+        score1.setText(&quot;Score : &quot; + score2);&#xD;
+        //변경된 정보로 다시 그리고 0.01초 쉼&#xD;
+        repaint();&#xD;
+        //게임 승리 검사&#xD;
+        for (int i = 0; i &lt; sprites.size(); i++) {&#xD;
+            Common sprite = (Common) sprites.get(i);&#xD;
+            if (sprite instanceof Alien)&#xD;
+                alienCount++;&#xD;
+        }&#xD;
+        //es.02.04 게임 승리시 스레드 실행 중지 및 승리 문구 출력 &#xD;
+        if (alienCount == 0) {&#xD;
+            Winner();&#xD;
+            break;&#xD;
+        }&#xD;
+        //if(other instanceof StarShip)&#xD;
+        try {&#xD;
+            Thread.sleep(10);&#xD;
+        } catch (Exception e) {&#xD;
+        }&#xD;
+        //es.02.02 게임 패배시 스레드 실행 중지(멈추기)&#xD;
+        if (endgamemg) {&#xD;
+            break;&#xD;
+        }&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oMuosIpJEeyoZtaM93f79w" name="keyPressed" specification="_oMmF0IpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //누른 키가 좌, 우 방향키이면 내 유닛 움직임&#xD;
+    if (e.getKeyCode() == KeyEvent.VK_LEFT)&#xD;
+        starship.setDx(-3);&#xD;
+    if (e.getKeyCode() == KeyEvent.VK_RIGHT)&#xD;
+        starship.setDx(3);&#xD;
+    //누른 키가 스페이스바이면 탄환 생성하여 발사&#xD;
+    if ((e.getKeyCode() == KeyEvent.VK_SPACE) &amp;&amp; (stage != 0))&#xD;
+        fire();&#xD;
+    if ((e.getKeyCode() == KeyEvent.VK_SPACE) &amp;&amp; (stage == 0)) {&#xD;
+        remove(start1);&#xD;
+        remove(start2);&#xD;
+        remove(guide1);&#xD;
+        remove(guide2);&#xD;
+        startGame();&#xD;
+    }&#xD;
+    //es.02.02 게임 패배시 엔터키를 누르면 종료&#xD;
+    if (e.getKeyCode() == KeyEvent.VK_ENTER &amp;&amp; endgamemg) {&#xD;
+        endGame();&#xD;
+    }&#xD;
+    //es.02.04 게임 승리시 엔터키를 누르면 종료&#xD;
+    if (e.getKeyCode() == KeyEvent.VK_ENTER &amp;&amp; winmg) {&#xD;
+        endGame();&#xD;
+    }&#xD;
+//		if(e.getKeyCode() == KeyEvent.VK_ENTER &amp;&amp; ) {&#xD;
+//			endGame();&#xD;
+//			}&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oNAVgIpJEeyoZtaM93f79w" name="keyReleased" specification="_oM3yoIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //좌우 방향키를 뗏으면 내 유닛 멈춤&#xD;
+    if (e.getKeyCode() == KeyEvent.VK_LEFT)&#xD;
+        starship.setDx(0);&#xD;
+    if (e.getKeyCode() == KeyEvent.VK_RIGHT)&#xD;
+        starship.setDx(0);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oNNw4IpJEeyoZtaM93f79w" name="keyTyped" specification="_oNIRUIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oNtgIIpJEeyoZtaM93f79w" name="main" specification="_oNe2oIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //이벤트 분배 스레드로 GUI와 각 객체 셋팅하고&#xD;
+    GalagonGame g = new GalagonGame();&#xD;
+//메인 스레드로 게임 진행&#xD;
+//		g.gameLoop();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oJ1swIpJEeyoZtaM93f79w" name="GalagonGame" visibility="public" method="_oKU08IpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oKcwwIpJEeyoZtaM93f79w" name="initSprites" visibility="private" method="_oKfNAIpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oKi3YIpJEeyoZtaM93f79w" name="startGame" visibility="private" method="_oKlToIpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oKplEIpJEeyoZtaM93f79w" name="endGame" visibility="public" method="_oKraQIpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oKvrsIpJEeyoZtaM93f79w" name="endGamemg" visibility="public" method="_oKyH8IpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oK2ZYIpJEeyoZtaM93f79w" name="Winner" visibility="public" method="_oK41oIpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oK9uIIpJEeyoZtaM93f79w" name="removeSprite" visibility="public" method="_oLDNsIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oLAKYIpJEeyoZtaM93f79w" name="sprite" type="_ny5zcIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oLEb0IpJEeyoZtaM93f79w" name="fire" visibility="public" method="_oLGRAIpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oLLJgIpJEeyoZtaM93f79w" name="Attack" visibility="public" method="_oLTsYIpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oL2e8IpJEeyoZtaM93f79w" name="paint" visibility="public" method="_oMEhYIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oMBeEIpJEeyoZtaM93f79w" name="g" type="_oLeEcIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oMKoAIpJEeyoZtaM93f79w" name="run" visibility="public" method="_oMOSYIpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oMmF0IpJEeyoZtaM93f79w" name="keyPressed" visibility="public" method="_oMuosIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oMrlYIpJEeyoZtaM93f79w" name="e" type="_oMUZAIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oM3yoIpJEeyoZtaM93f79w" name="keyReleased" visibility="public" method="_oNAVgIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oM8rIIpJEeyoZtaM93f79w" name="e" type="_oMUZAIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oNIRUIpJEeyoZtaM93f79w" name="keyTyped" visibility="public" method="_oNNw4IpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oNLUoIpJEeyoZtaM93f79w" name="arg0" type="_oMUZAIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oNe2oIpJEeyoZtaM93f79w" name="main" visibility="public" isStatic="true" method="_oNtgIIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oNk9QIpJEeyoZtaM93f79w" name="args" type="_oNTQcIpJEeyoZtaM93f79w">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oNp1wIpJEeyoZtaM93f79w"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oNrq8IpJEeyoZtaM93f79w" value="*"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_oJSTIIpJEeyoZtaM93f79w" name="Background" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oOVyQIpJEeyoZtaM93f79w" name="STAR_SIZE" visibility="private" isLeaf="true" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_oOb44IpJEeyoZtaM93f79w" name="defaultValue">
+              <language>JAVA</language>
+              <body>4</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oOfjQIpJEeyoZtaM93f79w" name="STAR" visibility="private" isLeaf="true" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_oOmQ8IpJEeyoZtaM93f79w" name="defaultValue">
+              <language>JAVA</language>
+              <body>80</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oOrJcIpJEeyoZtaM93f79w" name="game" visibility="private" type="_nzGnwIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oPDj8IpJEeyoZtaM93f79w" name="starVector" visibility="private" type="_oOzsUIpJEeyoZtaM93f79w" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_oPHOUIpJEeyoZtaM93f79w" name="defaultValue">
+              <language>JAVA</language>
+              <body>new Vector&lt;Point>()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oPLfwIpJEeyoZtaM93f79w" name="starVector2" visibility="private" type="_oOzsUIpJEeyoZtaM93f79w" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_oPNU8IpJEeyoZtaM93f79w" name="defaultValue">
+              <language>JAVA</language>
+              <body>new Vector&lt;Point>()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oPY7IIpJEeyoZtaM93f79w" name="Background" specification="_oPPxMIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.game = game;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oPeasIpJEeyoZtaM93f79w" name="addStar" specification="_oPb-cIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    for (int i = 0; i &lt; STAR; i++) {&#xD;
+        Point p = new Point((int) (Math.random() * game.getWidth()), (int) (Math.random() * game.getHeight()));&#xD;
+        starVector.add(p);&#xD;
+        int size = (int) (Math.random() * STAR_SIZE) + 1;&#xD;
+        Point p2 = new Point(size, size);&#xD;
+        starVector2.add(p2);&#xD;
+    //			int select = (int)(Math.random() * 5) + 1;&#xD;
+    //			switch(select) {&#xD;
+    //			case 1: colors.add(Color.WHITE); break;&#xD;
+    //			case 2: colors.add(Color.BLUE); break;&#xD;
+    //			case 3: colors.add(Color.RED); break;&#xD;
+    //			case 4: colors.add(Color.YELLOW); break;&#xD;
+    //			case 5: colors.add(Color.GREEN); break;&#xD;
+    //			}&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oPoLsIpJEeyoZtaM93f79w" name="draw" specification="_oPjTMIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    for (int i = 0; i &lt; starVector.size(); i++) {&#xD;
+        Point p = starVector.get(i);&#xD;
+        Point p2 = starVector2.get(i);&#xD;
+        if (p.x % 2 == 0)&#xD;
+            g.setColor(Color.WHITE);&#xD;
+        else if (p.x % 3 == 0)&#xD;
+            g.setColor(Color.BLUE);&#xD;
+        else if (p.x % 5 == 0)&#xD;
+            g.setColor(Color.RED);&#xD;
+        else if (p.x % 7 == 0)&#xD;
+            g.setColor(Color.YELLOW);&#xD;
+        else&#xD;
+            g.setColor(Color.GREEN);&#xD;
+        if (p.x % 2 == 0 &amp;&amp; p.y > 50 &amp;&amp; p.y &lt; 100)&#xD;
+            g.setColor(Color.BLACK);&#xD;
+        //			if(p.x%3 == 0 &amp;&amp; p.y > 150 &amp;&amp; p.y &lt; 200) g.setColor(Color.BLACK);&#xD;
+        if (p.x % 3 == 0 &amp;&amp; p.y > 250 &amp;&amp; p.y &lt; 300)&#xD;
+            g.setColor(Color.BLACK);&#xD;
+        //			if(p.x%7 == 0 &amp;&amp; p.y > 350 &amp;&amp; p.y &lt; 400) g.setColor(Color.BLACK);&#xD;
+        if (p.x % 5 == 0 &amp;&amp; p.y > 450 &amp;&amp; p.y &lt; 500)&#xD;
+            g.setColor(Color.BLACK);&#xD;
+        //			if(p.x%3 == 0 &amp;&amp; p.y > 550 &amp;&amp; p.y &lt; 600) g.setColor(Color.BLACK);&#xD;
+        if (p.x % 7 == 0 &amp;&amp; p.y > 650 &amp;&amp; p.y &lt; 700)&#xD;
+            g.setColor(Color.BLACK);&#xD;
+        //			if(p.x%7 == 0 &amp;&amp; p.y > 750 &amp;&amp; p.y &lt; 800) g.setColor(Color.BLACK);&#xD;
+        //			g.setColor(colors.get(i));&#xD;
+        g.fillOval(p.x, p.y, p2.x, p2.y);&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oPuSUIpJEeyoZtaM93f79w" name="move" specification="_oPsdIIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //offsetY는 별이 y축으로 움직일 값 생성&#xD;
+    int offsetY = 2;&#xD;
+    for (int i = 0; i &lt; STAR; i++) {&#xD;
+        //starVector의 i번째 포인트 좌표를 빼와서 저장하고&#xD;
+        Point p = starVector.get(i);&#xD;
+        //i번째 별의 y좌표에 offsetY값 만큼 추가&#xD;
+        p.y += offsetY;&#xD;
+        //y좌표가 화면 높이보다 크면 (화면 아래로 나가면)&#xD;
+        if (p.y > game.getHeight()) {&#xD;
+            //x좌표를 화면 가로 크기중 랜덤한 위치로 설정&#xD;
+            p.x = (int) (Math.random() * game.getWidth());&#xD;
+            //y좌표를 5로 설정&#xD;
+            p.y = 5;&#xD;
+        }&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oPPxMIpJEeyoZtaM93f79w" name="Background" visibility="public" method="_oPY7IIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oPXF8IpJEeyoZtaM93f79w" name="game" type="_nzGnwIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oPb-cIpJEeyoZtaM93f79w" name="addStar" visibility="private" method="_oPeasIpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oPjTMIpJEeyoZtaM93f79w" name="draw" visibility="public" method="_oPoLsIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oPlvcIpJEeyoZtaM93f79w" name="g" type="_oLeEcIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oPsdIIpJEeyoZtaM93f79w" name="move" visibility="public" method="_oPuSUIpJEeyoZtaM93f79w"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_oP7tsIpJEeyoZtaM93f79w" name="Shot" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_oP-xAIpJEeyoZtaM93f79w" general="_ny5zcIpJEeyoZtaM93f79w"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oQB0UIpJEeyoZtaM93f79w" name="game" visibility="private" type="_nzGnwIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oQVWUIpJEeyoZtaM93f79w" name="Shot" specification="_oQGFwIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //이미지 파일명, 이미지 x, y 좌표는 부모 클래스 생성자에서 초기화&#xD;
+    super(image, x, y);&#xD;
+    this.game = game;&#xD;
+    //y축 이동량 -3으로 초기화&#xD;
+    dy = -3;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oQaO0IpJEeyoZtaM93f79w" name="move" specification="_oQYZoIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //부모 클래스의 move 실행&#xD;
+    super.move();&#xD;
+    //y값이 -100보다 작으면 (탄환이 프레임 위쪽 밖으로 벗어나면)&#xD;
+    if (y &lt; -100)&#xD;
+        //해당 탄환 제거&#xD;
+        game.removeSprite(this);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oQj_0IpJEeyoZtaM93f79w" name="handleCollision" specification="_oQfuYIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //other 객체가(부딪힌 객체가) AlienSprite(적)이면&#xD;
+    if (other instanceof Alien) {&#xD;
+        //나와 적 모두 제거&#xD;
+        game.removeSprite(this);&#xD;
+        game.removeSprite(other);&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oQGFwIpJEeyoZtaM93f79w" name="Shot" visibility="public" method="_oQVWUIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oQMzcIpJEeyoZtaM93f79w" name="game" type="_nzGnwIpJEeyoZtaM93f79w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oQPPsIpJEeyoZtaM93f79w" name="image" type="_nzb-8IpJEeyoZtaM93f79w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oQQd0IpJEeyoZtaM93f79w" name="x">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oQThIIpJEeyoZtaM93f79w" name="y">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oQYZoIpJEeyoZtaM93f79w" name="move" visibility="public" method="_oQaO0IpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oQfuYIpJEeyoZtaM93f79w" name="handleCollision" visibility="public" method="_oQj_0IpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oQhjkIpJEeyoZtaM93f79w" name="other" type="_ny5zcIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_oQypUIpJEeyoZtaM93f79w" name="Alien" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_oQz3cIpJEeyoZtaM93f79w" general="_ny5zcIpJEeyoZtaM93f79w"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oQ2TsIpJEeyoZtaM93f79w" name="game" visibility="private" type="_nzGnwIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oQ6lIIpJEeyoZtaM93f79w" name="count" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_oQ-PgIpJEeyoZtaM93f79w" name="defaultValue">
+              <language>JAVA</language>
+              <body>0</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oRP8UIpJEeyoZtaM93f79w" name="Alien" specification="_oRArwIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //이미지 파일명, 이미지 x, y 좌표는 부모 클래스 생성자에서 초기화&#xD;
+    super(image, x, y);&#xD;
+    this.game = game;&#xD;
+    //y축 이동량 -3으로 초기화&#xD;
+    dx = 1;&#xD;
+    dy = 3;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oRWC8IpJEeyoZtaM93f79w" name="move" specification="_oRTmsIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    if (count > 100) {&#xD;
+        dx = -dx;&#xD;
+        count = 0;&#xD;
+    }&#xD;
+    if (y > 350 || y &lt; 0) {&#xD;
+        dy = -dy;&#xD;
+    }&#xD;
+    int attack = (int) (Math.random() * 4000) + 1;&#xD;
+    if (attack == 7)&#xD;
+        game.Attack();&#xD;
+    //x축 이동량이 0보다 크고 x축 위치가 800보다 크면&#xD;
+    if (((dx &lt; 0) &amp;&amp; (x &lt; 10)) || ((dx > 0) &amp;&amp; (x > 800))) {&#xD;
+        //x축 이동 방향 반대로&#xD;
+        dx = -dx;&#xD;
+        //y축 위치가 600보다 크면 게임 종료&#xD;
+        if (y > game.getHeight())&#xD;
+            game.endGame();&#xD;
+    }&#xD;
+    //부모 클래스 move 실행&#xD;
+    super.move();&#xD;
+    count++;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oRArwIpJEeyoZtaM93f79w" name="Alien" visibility="public" method="_oRP8UIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oRGyYIpJEeyoZtaM93f79w" name="game" type="_nzGnwIpJEeyoZtaM93f79w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oRJ1sIpJEeyoZtaM93f79w" name="image" type="_nzb-8IpJEeyoZtaM93f79w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oRMR8IpJEeyoZtaM93f79w" name="x">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oROHIIpJEeyoZtaM93f79w" name="y">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oRTmsIpJEeyoZtaM93f79w" name="move" visibility="public" method="_oRWC8IpJEeyoZtaM93f79w"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_oUOX0IpJEeyoZtaM93f79w" name="StarShip" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_oUSCMIpJEeyoZtaM93f79w" general="_ny5zcIpJEeyoZtaM93f79w"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_oUVskIpJEeyoZtaM93f79w" name="game" visibility="private" type="_nzGnwIpJEeyoZtaM93f79w" isUnique="false"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oUuuIIpJEeyoZtaM93f79w" name="StarShip" specification="_oUalEIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //이미지 파일명, 이미지 x, y 좌표는 부모 클래스 생성자에서 초기화&#xD;
+    super(image, x, y);&#xD;
+    this.game = game;&#xD;
+    //x, y축 이동량 0으로 초기화&#xD;
+    dx = 0;&#xD;
+    dy = 0;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oU0NsIpJEeyoZtaM93f79w" name="move" specification="_oUyYgIpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //x축 이동량이 0보다 작고 좌표가 10보다 작으면 움직임 종료 &#xD;
+    if ((dx &lt; 0) &amp;&amp; (x &lt; 10))&#xD;
+        return;&#xD;
+    //x축 이동량이 0보다 크고 좌표가 800보다 크면 움직임 종료&#xD;
+    if ((dx > 0) &amp;&amp; ((x + getWidth()) > game.getWidth()))&#xD;
+        return;&#xD;
+    //부모 클래스 move 실행&#xD;
+    super.move();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oU6UUIpJEeyoZtaM93f79w" name="handleCollision" specification="_oU2p8IpJEeyoZtaM93f79w">
+            <language>JAVA</language>
+            <body>&#xD;
+    //other 객체가(부딪힌 객체가) AlienSprite(적)이면&#xD;
+    if (other instanceof Alien)&#xD;
+        //ES 1.28 게임 종료 메세지 출력&#xD;
+        game.endGamemg();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oUalEIpJEeyoZtaM93f79w" name="StarShip" visibility="public" method="_oUuuIIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oUjvAIpJEeyoZtaM93f79w" name="game" type="_nzGnwIpJEeyoZtaM93f79w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oUoAcIpJEeyoZtaM93f79w" name="image" type="_nzb-8IpJEeyoZtaM93f79w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oUqcsIpJEeyoZtaM93f79w" name="x">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oUsR4IpJEeyoZtaM93f79w" name="y">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oUyYgIpJEeyoZtaM93f79w" name="move" visibility="public" method="_oU0NsIpJEeyoZtaM93f79w"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_oU2p8IpJEeyoZtaM93f79w" name="handleCollision" visibility="public" method="_oU6UUIpJEeyoZtaM93f79w">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oU5GMIpJEeyoZtaM93f79w" name="other" type="_ny5zcIpJEeyoZtaM93f79w"/>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_nzVRQIpJEeyoZtaM93f79w" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_nzYUkIpJEeyoZtaM93f79w" name="java">
+        <packagedElement xmi:type="uml:Package" xmi:id="_nzaJwIpJEeyoZtaM93f79w" name="awt">
+          <packagedElement xmi:type="uml:Class" xmi:id="_nzb-8IpJEeyoZtaM93f79w" name="Image"/>
+          <packagedElement xmi:type="uml:Package" xmi:id="_oGIRcIpJEeyoZtaM93f79w" name="event">
+            <packagedElement xmi:type="uml:Interface" xmi:id="_oGKGoIpJEeyoZtaM93f79w" name="KeyListener"/>
+            <packagedElement xmi:type="uml:Class" xmi:id="_oMUZAIpJEeyoZtaM93f79w" name="KeyEvent"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_oH6aIIpJEeyoZtaM93f79w" name="image">
+            <packagedElement xmi:type="uml:Class" xmi:id="_oH8PUIpJEeyoZtaM93f79w" name="BufferedImage"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_oLeEcIpJEeyoZtaM93f79w" name="Graphics"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_oG0N8IpJEeyoZtaM93f79w" name="lang">
+          <packagedElement xmi:type="uml:Interface" xmi:id="_oG2qMIpJEeyoZtaM93f79w" name="Runnable"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_oNTQcIpJEeyoZtaM93f79w" name="String"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_oHYOoIpJEeyoZtaM93f79w" name="util">
+          <packagedElement xmi:type="uml:Class" xmi:id="_oHaq4IpJEeyoZtaM93f79w" name="ArrayList"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_oOzsUIpJEeyoZtaM93f79w" name="Vector"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_oFpwUIpJEeyoZtaM93f79w" name="importedTypes">
+      <packagedElement xmi:type="uml:Package" xmi:id="_oFszoIpJEeyoZtaM93f79w" name="javax">
+        <packagedElement xmi:type="uml:Package" xmi:id="_oFuo0IpJEeyoZtaM93f79w" name="swing">
+          <packagedElement xmi:type="uml:Class" xmi:id="_oFweAIpJEeyoZtaM93f79w" name="JPanel"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_oIYUMIpJEeyoZtaM93f79w" name="JLabel"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_nsrPoIpJEeyoZtaM93f79w">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nsykYIpJEeyoZtaM93f79w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_nvcPwIpJEeyoZtaM93f79w">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nvf6IIpJEeyoZtaM93f79w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/Codegen/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://Codegen_PROFILES/Codegen.profile.uml#_fPDsIBa-EearhdjjJ6cVzQ"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_nvmAwIpJEeyoZtaM93f79w">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nvprIIpJEeyoZtaM93f79w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <PapyrusJava:External xmi:id="_oCJJUIpJEeyoZtaM93f79w" name="java.awt.Image" base_Classifier="_nzb-8IpJEeyoZtaM93f79w"/>
+  <standard:Create xmi:id="_oDgbQIpJEeyoZtaM93f79w" base_BehavioralFeature="_oDSY0IpJEeyoZtaM93f79w"/>
+  <PapyrusJava:External xmi:id="_oGAVoIpJEeyoZtaM93f79w" name="javax.swing.JPanel" base_Classifier="_oFweAIpJEeyoZtaM93f79w"/>
+  <PapyrusJava:External xmi:id="_oGT3oIpJEeyoZtaM93f79w" name="java.awt.event.KeyListener" base_Classifier="_oGKGoIpJEeyoZtaM93f79w"/>
+  <PapyrusJava:External xmi:id="_oHCQYIpJEeyoZtaM93f79w" name="java.lang.Runnable" base_Classifier="_oG2qMIpJEeyoZtaM93f79w"/>
+  <PapyrusJava:External xmi:id="_oHkb4IpJEeyoZtaM93f79w" name="java.util.ArrayList" base_Classifier="_oHaq4IpJEeyoZtaM93f79w"/>
+  <PapyrusJava:External xmi:id="_oIELIIpJEeyoZtaM93f79w" name="java.awt.image.BufferedImage" base_Classifier="_oH8PUIpJEeyoZtaM93f79w"/>
+  <PapyrusJava:External xmi:id="_oIj6YIpJEeyoZtaM93f79w" name="javax.swing.JLabel" base_Classifier="_oIYUMIpJEeyoZtaM93f79w"/>
+  <standard:Create xmi:id="_oJ6lQIpJEeyoZtaM93f79w" base_BehavioralFeature="_oJ1swIpJEeyoZtaM93f79w"/>
+  <PapyrusJava:External xmi:id="_oLnOYIpJEeyoZtaM93f79w" name="java.awt.Graphics" base_Classifier="_oLeEcIpJEeyoZtaM93f79w"/>
+  <PapyrusJava:External xmi:id="_oMhNUIpJEeyoZtaM93f79w" name="java.awt.event.KeyEvent" base_Classifier="_oMUZAIpJEeyoZtaM93f79w"/>
+  <PapyrusJava:External xmi:id="_oNZXEIpJEeyoZtaM93f79w" name="java.lang.String" base_Classifier="_oNTQcIpJEeyoZtaM93f79w"/>
+  <PapyrusJava:External xmi:id="_oPBHsIpJEeyoZtaM93f79w" name="java.util.Vector" base_Classifier="_oOzsUIpJEeyoZtaM93f79w"/>
+  <standard:Create xmi:id="_oPUpsIpJEeyoZtaM93f79w" base_BehavioralFeature="_oPPxMIpJEeyoZtaM93f79w"/>
+  <standard:Create xmi:id="_oQK-QIpJEeyoZtaM93f79w" base_BehavioralFeature="_oQGFwIpJEeyoZtaM93f79w"/>
+  <standard:Create xmi:id="_oREWIIpJEeyoZtaM93f79w" base_BehavioralFeature="_oRArwIpJEeyoZtaM93f79w"/>
+  <standard:Create xmi:id="_oSB_cIpJEeyoZtaM93f79w" base_BehavioralFeature="_oR9G8IpJEeyoZtaM93f79w"/>
+  <standard:Create xmi:id="_oUgEoIpJEeyoZtaM93f79w" base_BehavioralFeature="_oUalEIpJEeyoZtaM93f79w"/>
+</xmi:XMI>
